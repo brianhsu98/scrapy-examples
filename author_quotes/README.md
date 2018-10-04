@@ -4,9 +4,9 @@ Spider that grabs quotes from specific authors
 
 ## Usage:
 
-- Grab all authors: `scrapy crawl quotes_filter -o out.json`
-- Grab specific author: `scrapy crawl quotes_filter -o out.json -a author="AUTHOR NAME"`
+- Grab all authors: `scrapy crawl author_quotes -o out.json`
+- Grab specific author: `scrapy crawl author_quotes -o out.json -a author="AUTHOR NAME"`
 
 
 ## Example:
-- `scrapy crawl quotes_filter -o out.json -a author="Harper Lee"`
+- `scrapy crawl author_quotes -o out.json -a author="Harper Lee"`

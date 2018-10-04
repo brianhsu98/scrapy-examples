@@ -1,10 +1,10 @@
 import scrapy
 
-class QuotesFilterSpider(scrapy.Spider):
+class AuthorQuotesSpider(scrapy.Spider):
     """
     Gets quotes from a certain author, if specified. Otherwise, returns all quotes.
     """
-    name = "quotes_filter"
+    name = "author_quotes"
 
     def start_requests(self):
         start_url = "http://quotes.toscrape.com/page/1/"

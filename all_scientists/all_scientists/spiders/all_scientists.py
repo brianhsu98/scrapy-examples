@@ -26,5 +26,5 @@ class AllScientistsSpider(scrapy.Spider):
             search_results = re.findall(search_term, bio, re.IGNORECASE)
             if len(search_results) != 0:
                 yield {
-                    'author': response.css('h3.author-title::text').extract_first()
+                    'author': response.css('h3.author-title::text').extract_first().strip()
                 }
