@@ -11,6 +11,7 @@ class SearchAuthorSpider(scrapy.Spider):
 
         if getattr(self, "target_author", None) is None:
             raise Exception("Please supply a target_author name")
+        self.target_author = getattr(self, 'target_author', None)
 
         start_url = "http://quotes.toscrape.com/page/1/"
         yield scrapy.Request(url=start_url, callback=self.parse)
@@ -21,10 +22,7 @@ class SearchAuthorSpider(scrapy.Spider):
             quote_author = quote.css('small.author::text').extract_first()
             self.all_authors.add(quote_author)
 
-            target_author = getattr(self, 'target_author', None)
-            if quote_author != target_author:
-                continue
-            else:
+            if quote_author == target_author:
                 self.target_author_found = True
                 yield {
                     'text': quote.css('span.text::text').extract_first(),
@@ -45,3 +43,39 @@ class SearchAuthorSpider(scrapy.Spider):
                 }
         else:
             yield response.follow(next_page, self.parse)
+
+
+# Pass at pseud-code description.
+# Import necessary libraries
+
+# Initialize spider class
+#   Set unique name of spider
+
+#   Define the function to start requests
+#     Create container for authors found so far
+#     Create checker if the target author has ever been found
+#     Create a variable for the target author
+
+#     If the target author isn’t specified
+#       Raise an error to define the target author
+
+#     initialize URL to start at
+#     Scrape the start URL
+
+#   Define the function to parse a response
+#     For every quote on the page
+#       Create a variable for the quote author
+#       Add to the authors found so far
+
+#       If the quote author is the target author
+#         Mark that the target author has been found
+#         Yield quote metadata
+
+#     Create a variable with the link to the next page
+
+#     If this is the final page
+#       If the target author wasn’t present
+#         Yield the full set of authors
+#     If this is not the final page
+#       Move on to the next page
+#       
