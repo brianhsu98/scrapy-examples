@@ -21,4 +21,11 @@ passing in a search term.
 - `search_author`: Grabs all the quotes from a specific, user-supplied author. If no quotes by that author exists, 
 returns a list of all authors with available quotes.
     - Required parameter `author=AUTHOR`
-- `tutorial`: The tutorial, straight from the scrapy website. Grabs authors and quotes.
+- `quotes_spider` and `quotes_spider_link_extractor`: Gets all quotes, authors, and tags
+
+## Usage
+
+- Move into the examples directory: `cd examples`
+- Run a spider: `scrapy crawl SPIDER_NAME`
+    - Specify an output file: `scrapy crawl SPIDER_NAME -o out.json`
+    - Specify arguments: `scrapy crawl SPIDER_NAME -a ARGUMENT=VALUE`
